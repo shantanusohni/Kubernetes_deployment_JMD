@@ -8,7 +8,7 @@ pipeline {
                         projectId: "fresh-shell-275710",
                         clusterName: "jaimatadi",
                         zone: "us-central1-a",
-                        manifestPattern: 'k8s/staging/',
+                        manifestPattern: 'deployment.yaml',
                         credentialsId: "gke",
                         verifyDeployments: true])
             }
@@ -27,7 +27,7 @@ pipeline {
                         projectId: "fresh-shell-275710",
                         clusterName: "jaimatadi",
                         zone: "us-central1-a",
-                        manifestPattern: 'k8s/production/',
+                        manifestPattern: 'deployment.yaml',
                         credentialsId: "gke",
                         verifyDeployments: true])
             }
