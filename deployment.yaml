@@ -1,38 +1,21 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-name: hello
-labels:
-  app: hello
+  name: nginx-deployment
+  labels:
+    app: nginx
 spec:
-strategy:
-  type: Recreate
-template:
-  metadata:
-    labels:
-      app: hello
-      tier: hello
-  spec:
-    containers:
-    - name: hello
-      image: shantanusohni/hello:latest
-      imagePullPolicy: Always
-      ports:
-      - containerPort: 5000
-        name: hello
-
----
-apiVersion: v1
-kind: Service
-metadata:
-name: hello
-labels:
-  app: hello
-spec:
-ports:
-  - port: 5000
-    targetPort: 5000
-selector:
-  app: hello
-  tier: hello
-type: LoadBalancer
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: shantanusohni/hellow:latest
+        ports:
+        - containerPort: 80
