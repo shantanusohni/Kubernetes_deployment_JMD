@@ -1,5 +1,5 @@
 pipeline {
-    agent { label: "default" }
+    agent any
     stages {
         stage('Deploy Staging') {
             steps{
