@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: nginx-deployment
   labels:
-    app: mywebsite
-    tier: frontend
+    app: nginx
 spec:
-  replicas: 4
-  template:
-    metadata:
-      name: myapp-pod
-      labels:
-        app: myapp
-    spec:
-      containers:
-        - name: nginx
-          image: nginx
+  replicas: 3
   selector:
     matchLabels:
-      app: myapp
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
